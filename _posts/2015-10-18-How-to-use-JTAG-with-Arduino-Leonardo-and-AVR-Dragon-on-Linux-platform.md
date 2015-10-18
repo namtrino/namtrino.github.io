@@ -12,9 +12,9 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
 
 1. Read “Memory Programming” section in datasheet
 
- ~~~bash
+ ```bash
  sudo apt-get update
- ~~~
+ ```
 
 2. Check JTAGEN by reading FUSE
 
