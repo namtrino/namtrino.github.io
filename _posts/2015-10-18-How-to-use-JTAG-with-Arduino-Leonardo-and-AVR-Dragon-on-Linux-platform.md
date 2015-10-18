@@ -7,9 +7,10 @@ modified: 2015-10-18
 comments: true
 ---
 
-Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.[^1]
 
-[^1]: <http://en.wikipedia.org/wiki/Syntax_highlighting>
+
+Syntax highlighting is a feature that displays source code, in different colors and fonts according to the category of terms. This feature facilitates writing in a structured language such as a programming language or a markup language as both structures and syntax errors are visually distinct. Highlighting does not affect the meaning of the text itself; it is intended only for human readers.
+
 
 
 1. Read “Memory Programming” section in datasheet
@@ -20,7 +21,7 @@ sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U lfuse:r:low_fuse_default.hex:h 
 {% endhighlight %}
 
 3. Evaluate high FUSE
-{% hightlight bash  %}
+{% highlight bash  %}
 $ cat high_fuse_default.hex 
 0xd8
 $ echo "obase=2; ibase=16; D8" | bc
@@ -34,7 +35,7 @@ $
 {% endhighlight %}
 
 4. Program new FUSE to target 
-{% hightlight bash  %}
+{% highlight bash  %}
 $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:jtag_high_fuse.hex:h <<< Fail
 $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:0x18:m << OK
 .
@@ -75,7 +76,7 @@ $
 {% endhighlight %}
 
 5. Code & Build
-{% hightlight bash  %}
+{% highlight bash  %}
 $ cat main.c 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -99,7 +100,7 @@ $
 {% endhighlight %}
 
 6. Flash output.hex to target
-{% hightlight bash  %}
+{% highlight bash  %}
 sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U flash:w:output.hex
 {% endhighlight %}
 
@@ -108,7 +109,7 @@ sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U flash:w:output.hex
 [link2](http://www.atmel.com/webdoc/atmelice/atmelice.using_ocd_physical_jtag.html)
 
 8. Test JTAG connection
-{% hightlight bash  %}
+{% highlight bash  %}
 $ sudo avarice --dragon --jtag usb
 AVaRICE version 2.11, Jan 17 2014 02:51:59
 
@@ -123,7 +124,7 @@ JTAG config complete.
 {% endhighlight %}
 
 9. Test JTAG functionality with “avr-gdb” 
-{% hightlight bash  %}
+{% highlight bash  %}
 $ sudo avarice --dragon --jtag usb :4242
 AVaRICE version 2.11, Jan 17 2014 02:51:59
 Defaulting JTAG bitrate to 250 kHz.
@@ -144,7 +145,7 @@ Waiting for connection on port 4242.
 
 
 10. Open new terminal and run “avr-gdb” 
-{% hightlight bash  %}
+{% highlight bash  %}
 $ avr-gdb 
 .
 .
