@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to use JTAG with Arduino Leonardo and AVR Dragon on Linux platform
-excerpt: ""
+excerpt: "A step-by-step example to setup JTAG on Arduino-Leonardo with AVR Dragon on Linux Platform"
 tags: [AVR, Arduino-Leonardo, Linux, JTAG, AVR-Dragon]
 modified: 2015-10-18
 comments: true
@@ -16,12 +16,12 @@ Syntax highlighting is a feature that displays source code, in different colors 
 1. Read “Memory Programming” section in datasheet
 2. Check JTAGEN by reading FUSE
 
-{% highlight bash %}
+{% highlight console %}
 sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U lfuse:r:low_fuse_default.hex:h -U hfuse:r:high_fuse_default.hex:h
 {% endhighlight %}
 
 3. Evaluate high FUSE
-{% highlight bash  %}
+{% highlight console  %}
 $ cat high_fuse_default.hex 
 0xd8
 $ echo "obase=2; ibase=16; D8" | bc
@@ -35,7 +35,7 @@ $
 {% endhighlight %}
 
 4. Program new FUSE to target 
-{% highlight bash  %}
+{% highlight console  %}
 $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:jtag_high_fuse.hex:h <<< Fail
 $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:0x18:m << OK
 .
@@ -76,7 +76,7 @@ $
 {% endhighlight %}
 
 5. Code & Build
-{% highlight bash  %}
+{% highlight console  %}
 $ cat main.c 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -100,7 +100,7 @@ $
 {% endhighlight %}
 
 6. Flash output.hex to target
-{% highlight bash  %}
+{% highlight console  %}
 sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U flash:w:output.hex
 {% endhighlight %}
 
@@ -109,7 +109,7 @@ sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U flash:w:output.hex
 [link2](http://www.atmel.com/webdoc/atmelice/atmelice.using_ocd_physical_jtag.html)
 
 8. Test JTAG connection
-{% highlight bash  %}
+{% highlight console  %}
 $ sudo avarice --dragon --jtag usb
 AVaRICE version 2.11, Jan 17 2014 02:51:59
 
@@ -124,7 +124,7 @@ JTAG config complete.
 {% endhighlight %}
 
 9. Test JTAG functionality with “avr-gdb” 
-{% highlight bash  %}
+{% highlight console  %}
 $ sudo avarice --dragon --jtag usb :4242
 AVaRICE version 2.11, Jan 17 2014 02:51:59
 Defaulting JTAG bitrate to 250 kHz.
@@ -145,7 +145,7 @@ Waiting for connection on port 4242.
 
 
 10. Open new terminal and run “avr-gdb” 
-{% highlight bash  %}
+{% highlight console  %}
 $ avr-gdb 
 .
 .
