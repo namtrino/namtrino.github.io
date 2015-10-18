@@ -7,10 +7,10 @@ modified: 2015-10-18
 comments: true
 ---
 
-#Hi
+##Hi
 The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
 
-####1. Read “Memory Programming” section in datasheet
+####1. Read “Memory Programming” section in [atmega32u4 datasheet](http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf)
 
 ####2. Check JTAGEN by reading FUSE
 
