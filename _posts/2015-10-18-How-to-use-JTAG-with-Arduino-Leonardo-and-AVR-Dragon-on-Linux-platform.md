@@ -7,22 +7,18 @@ modified: 2015-10-18
 comments: true
 ---
 
-### Hi
-The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
+#Hi
+#The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
 
-1. Read “Memory Programming” section in datasheet
+#1. Read “Memory Programming” section in datasheet
 
-    ```bash
-    sudo apt-get update
-    ```
-
-2. Check JTAGEN by reading FUSE
+#2. Check JTAGEN by reading FUSE
 
   {% highlight console %}
   sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U lfuse:r:low_fuse_default.hex:h -U hfuse:r:high_fuse_default.hex:h
   {% endhighlight %}
 
-3. Evaluate high FUSE
+#3. Evaluate high FUSE
   {% highlight console  %}
   $ cat high_fuse_default.hex
   0xd8
@@ -36,7 +32,7 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   $
   {% endhighlight %}
 
-4. Program new FUSE to target
+#4. Program new FUSE to target
   {% highlight console  %}
   $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:jtag_high_fuse.hex:h <<< Fail
   $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:0x18:m << OK
@@ -77,7 +73,7 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   $
   {% endhighlight %}
 
-5. Code & Build
+#5. Code & Build
   {% highlight console  %}
   $ cat main.c
   #include <avr/io.h>
@@ -101,16 +97,16 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   $
   {% endhighlight %}
 
-6. Flash output.hex to target
+#6. Flash output.hex to target
   {% highlight console  %}
   sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U flash:w:output.hex
   {% endhighlight %}
 
-7. Wiring JTAG
+#7. Wiring JTAG
   [link1](http://www.atmel.com/webdoc/avrdragon/avrdragon.using_ocd_physical_jtag.html)
   [link2](http://www.atmel.com/webdoc/atmelice/atmelice.using_ocd_physical_jtag.html)
 
-8. Test JTAG connection
+#8. Test JTAG connection
   {% highlight console  %}
   $ sudo avarice --dragon --jtag usb
   AVaRICE version 2.11, Jan 17 2014 02:51:59
@@ -125,7 +121,7 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   JTAG config complete.
   {% endhighlight %}
 
-9. Test JTAG functionality with “avr-gdb”
+#9. Test JTAG functionality with “avr-gdb”
   {% highlight console  %}
   $ sudo avarice --dragon --jtag usb :4242
   AVaRICE version 2.11, Jan 17 2014 02:51:59
@@ -146,7 +142,7 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   {% endhighlight %}
 
 
-10. Open new terminal and run “avr-gdb”
+#10. Open new terminal and run “avr-gdb”
   {% highlight console  %}
   $ avr-gdb
   .
