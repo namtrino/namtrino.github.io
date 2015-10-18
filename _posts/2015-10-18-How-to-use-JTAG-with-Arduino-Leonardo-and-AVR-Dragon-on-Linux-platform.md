@@ -122,6 +122,7 @@ An example of a Gist embed below.
 
 1. Read “Memory Programming” section in datasheet
 2. Check JTAGEN by reading FUSE
-~~~ c
+
+```shell
 sudo avrdude -v -P usb -c dragon_isp -p m32u4 -U lfuse:r:low_fuse_default.hex:h -U hfuse:r:high_fuse_default.hex:h
-~~~
+```
