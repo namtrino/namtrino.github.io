@@ -38,7 +38,7 @@ The step of an example below is tested with Ubuntu-14.04, x86_64 host machine.
   > You cannot use the hex value from file to set the FUSE as shown below
 
 
-  $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:**__**jtag_high_fuse.hex:h**__**
+  $sudo avrdude -v -P usb -c dragon_isp  -p m32u4 -U  hfuse:w:jtag_high_fuse.hex:h
   so, you need to set the hex value directly
 
   {% highlight console  %}
